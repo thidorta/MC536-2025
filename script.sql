@@ -1,11 +1,12 @@
 DROP TABLE IF EXISTS saneamento;
 
 CREATE TABLE saneamento (
-	saneamento_id												smallserial,
-	saneamento_pais_id											smallserial,
-	porcentagem_urbana_com_instalacoes_basicas					real,
-	porcentagem_rural_com_instalacoes_basicas					real,
-	morte_por_sanitacao_nao_segura_a_cada_100000_mortes		real,
+	saneamento_id															smallserial,
+	saneamento_pais_id														smallserial,
+	porcentagem_urbana_com_acesso_a_instalacoes_basicas								real,
+	porcentagem_rural_com_acesso_a_instalacoes_basicas								real,
+	taxa_de_morte__a_cada_100000_mortes_devido_a_sanitacao_nao_segura		real,
+
 	CONSTRAINT PK_saneamento
 		PRIMARY KEY (saneamento_id)
 );
@@ -13,11 +14,12 @@ CREATE TABLE saneamento (
 DROP TABLE IF EXISTS higiene;
 
 CREATE TABLE higiene (
-	higiene_id													smallserial,
-	higiene_pais_id												smallserial,
-	porcentagem_urbana_com_instalacoes_basicas					real,
-	porcentagem_rural_com_instalacoes_basicas					real,
-	morte_por_sanitacao_nao_segura_a_cada_100000_mortes		real,
+	higiene_id																				smallserial,
+	higiene_pais_id																			smallserial,
+	porcentagem_urbana_com_acesso_a_instalacoes_basicas												real,
+	porcentagem_rural_com_acesso_a_instalacoes_basicas												real,
+	taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos		real,
+
 	CONSTRAINT PK_higiene
 		PRIMARY KEY (higiene_id)
 );
@@ -25,54 +27,145 @@ CREATE TABLE higiene (
 DROP TABLE IF EXISTS agua_potavel;
 
 CREATE TABLE agua_potavel (
-	agua_potavel_id												smallserial,
-	agua_potavel_pais_id										smallserial,
-	porcentagem_urbana_com_instalacoes_basicas					real,
-	porcentagem_rural_com_instalacoes_basicas					real,
-	morte_por_sanitacao_nao_segura_a_cada_100000_mortes		real,
+	agua_potavel_id															smallserial,
+	agua_potavel_pais_id													smallserial,
+	porcentagem_urbana_com_acesso_a_instalacoes_basicas								real,
+	porcentagem_rural_com_acesso_a_instalacoes_basicas								real,
+	taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura			real,
+
 	CONSTRAINT PK_agua_potavel
 		PRIMARY KEY (agua_potavel_id)
 );
 
-DROP TABLE IF EXISTS quimicos;
+DROP TABLE IF EXISTS economia;
 
-CREATE TABLE quimicos (
-	quimicos_id							smallserial,
-	quimicos_pais_id					smallserial,
-	concentracao_de_amonio_mg_por_L	real,
-	concentracao_de_nitrato_mg_por_L	real,
-	concentracao_de_fosforo_mg_por_L	real,
-	CONSTRAINT PK_quimicos
-		PRIMARY KEY (quimicos_id)
+CREATE TABLE economia (
+	economia_id				smallserial,
+	economia_pais_id		smallserial,
+	GINI					real,
+	PIB_per_capita			real,
+	taxa_de_desemprego		real,
+
+	CONSTRAINT PK_economia
+		PRIMARY KEY (economia_id)
 );
 
-DROP TABLE IF EXISTS paises;
+DROP TABLE IF EXISTS qualidade_de_vida;
 
-CREATE TABLE paises (
-	pais_id					smallserial,
-	nome					varchar(20) NOT NULL,
-	continente				varchar(20) NOT NULL,
-	GDP						real,
-	CONSTRAINT PK_paises
+CREATE TABLE qualidade_de_vida (
+	qualidade_de_vida_id					smallserial,
+	qualidade_de_vida_pais_id				smallserial,
+	IDH										real,
+	expectativa_de_vida						real,
+	gasto_publico_no_sistema_de_saude		real,
+
+	CONSTRAINT PK_qualidade_de_vida
+		PRIMARY KEY (qualidade_de_vida_id)
+);
+
+DROP TABLE IF EXISTS metodo_de_descarte_de_excrementos;
+
+CREATE TABLE metodo_de_descarte_de_excrementos (
+	metodo_de_descarte_de_excrementos_id				smallserial,
+	metodo_de_descarte_de_excrementos_pais_id			smallserial,
+	total												integer,
+	incineracao											integer,
+	compostagem											integer,
+	lixeiras_supervisionadas							integer,
+	lixeiras_nao_supervisionadas						integer,
+
+	CONSTRAINT PK_metodo_de_descarte_de_excrementos
+		PRIMARY KEY (metodo_de_descarte_de_excrementos_id)
+);
+
+DROP TABLE IF EXISTS emissao_gases;
+
+CREATE TABLE emissao_gases (
+	emissao_gases_id							smallserial,
+	emissao_gases_pais_id						smallserial,
+	emissao_CO2_em_quilotoneladas_por_ano		integer,
+	emissao_CH4_em_quilotoneladas_por_ano		integer,
+	emissao_N2O_em_quilotoneladas_por_ano		integer,
+
+	CONSTRAINT PK_emissao_gases
+		PRIMARY KEY (emissao_gases_id)
+);
+
+DROP TABLE IF EXISTS agua_disponibilidade_e_tratamento;
+
+CREATE TABLE agua_disponibilidade_e_tratamento (
+	agua_disponibilidade_e_tratamento_id						smallserial,
+	agua_disponibilidade_e_tratamento_pais_id					smallserial,
+	precipitacao_milhoes_de_metros_cubicos_por_ano				integer,
+	agua_suja_gerada_em_1000_metros_cubicos_por_dia			integer,
+	agua_suja_nao_tratada_em_1000_metros_cubicos_por_dia		integer,
+
+	CONSTRAINT PK_agua_disponibilidade_e_tratamento
+		PRIMARY KEY (agua_disponibilidade_e_tratamento_id)
+);
+
+DROP TABLE IF EXISTS desenvolvimento_da_area_da_saude;
+
+CREATE TABLE desenvolvimento_da_area_da_saude (
+	desenvolvimento_da_area_da_saude_id								smallserial,
+	desenvolvimento_da_area_da_saude_pais_id							smallserial,
+	numero_de_casos_de_colera											integer,
+	gasto_governamental_per_capita_na_area_da_saude_em_dolares			integer,
+	numero_de_camas_hospitalares_a_cada_10000_cidadaos					integer,
+
+	CONSTRAINT PK_agua_disponibilidade_e_tratamento
+		PRIMARY KEY (agua_disponibilidade_e_tratamento_id)
+);
+
+DROP TABLE IF EXISTS pais;
+
+CREATE TABLE pais (
+	pais_id											smallserial,
+	nome											varchar(20) NOT NULL,
+	continente										varchar(20) NOT NULL,
+	numero_de_habitantes							integer		NOT NULL,
+
+	CONSTRAINT PK_pais
 		PRIMARY KEY (pais_id)
 );
 
 ALTER TABLE saneamento
-       ADD CONSTRAINT FK01_paises_saneamento
+       ADD CONSTRAINT FK01_pais_saneamento
               FOREIGN KEY (saneamento_pais_id)
-                             REFERENCES paises (pais_id);
+                             REFERENCES pais (pais_id);
 
 ALTER TABLE higiene
-       ADD CONSTRAINT FK02_paises_higiene
+       ADD CONSTRAINT FK02_pais_higiene
               FOREIGN KEY (higiene_pais_id)
-                             REFERENCES paises (pais_id);
+                             REFERENCES pais (pais_id);
 
 ALTER TABLE agua_potavel
-       ADD CONSTRAINT FK03_paises_agua_potavel
+       ADD CONSTRAINT FK03_pais_agua_potavel
               FOREIGN KEY (agua_potavel_pais_id)
-                             REFERENCES paises (pais_id);
+                             REFERENCES pais (pais_id);
 
-ALTER TABLE quimicos
-       ADD CONSTRAINT FK04_paises_quimicos
-              FOREIGN KEY (quimicos_pais_id)
-                             REFERENCES paises (pais_id);
+
+ALTER TABLE economia
+       ADD CONSTRAINT FK04_pais_economia
+              FOREIGN KEY (economia_pais_id)
+                             REFERENCES pais (pais_id);
+
+ALTER TABLE qualidade_de_vida
+       ADD CONSTRAINT FK05_pais_qualidade_de_vida
+              FOREIGN KEY (qualidade_de_vida_pais_id)
+                             REFERENCES pais (pais_id);
+
+ALTER TABLE metodo_de_descarte_de_excrementos
+       ADD CONSTRAINT FK06_metodo_de_descarte_de_excrementos
+              FOREIGN KEY (metodo_de_descarte_de_excrementos_pais_id)
+                             REFERENCES pais (pais_id);
+
+ALTER TABLE emissao_gases
+       ADD CONSTRAINT FK07_emissao_gases
+              FOREIGN KEY (emissao_gases_pais_id)
+                             REFERENCES pais (pais_id);
+
+ALTER TABLE agua_disponibilidade_e_tratamento
+       ADD CONSTRAINT FK08_agua_disponibilidade_e_tratamento
+              FOREIGN KEY (agua_disponibilidade_e_tratamento_pais_id)
+                             REFERENCES pais (pais_id);

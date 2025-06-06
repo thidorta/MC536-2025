@@ -1,0 +1,3 @@
+https://data.un.org/Data.aspx?d=GHG&f=seriesID%3aN2O
+https://data.un.org/Data.aspx?d=GHG&f=seriesID%3aCO2
+https://data.un.org/Data.aspx?d=GHG&f=seriesID%3aCH4
