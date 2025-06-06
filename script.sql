@@ -113,8 +113,8 @@ CREATE TABLE desenvolvimento_da_area_da_saude (
 	gasto_governamental_per_capita_na_area_da_saude_em_dolares			integer,
 	numero_de_camas_hospitalares_a_cada_10000_cidadaos					integer,
 
-	CONSTRAINT PK_agua_disponibilidade_e_tratamento
-		PRIMARY KEY (agua_disponibilidade_e_tratamento_id)
+	CONSTRAINT PK_desenvolvimento_da_area_da_saude
+		PRIMARY KEY (desenvolvimento_da_area_da_saude_id)
 );
 
 DROP TABLE IF EXISTS pais;
@@ -168,4 +168,9 @@ ALTER TABLE emissao_gases
 ALTER TABLE agua_disponibilidade_e_tratamento
        ADD CONSTRAINT FK08_agua_disponibilidade_e_tratamento
               FOREIGN KEY (agua_disponibilidade_e_tratamento_pais_id)
+                             REFERENCES pais (pais_id);
+
+ALTER TABLE desenvolvimento_da_area_da_saude
+       ADD CONSTRAINT FK09_desenvolvimento_da_area_da_saude
+              FOREIGN KEY (desenvolvimento_da_area_da_saude_pais_id)
                              REFERENCES pais (pais_id);
