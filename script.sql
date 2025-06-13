@@ -49,10 +49,10 @@ CREATE TABLE economia (
 DROP TABLE IF EXISTS qualidade_de_vida;
 
 CREATE TABLE qualidade_de_vida (
-	qualidade_de_vida_pais_nome				varchar(50),
-	IDH										real,
-	expectativa_de_vida						real,
-	gasto_publico_no_sistema_de_saude		real,
+	qualidade_de_vida_pais_nome												varchar(50),
+	IDH																		real,
+	expectativa_de_vida														real,
+	gasto_publico_no_sistema_de_saude_como_porcentagem_do_gasto_total		real,
 
 	CONSTRAINT PK_qualidade_de_vida
 		PRIMARY KEY (qualidade_de_vida_pais_nome)
