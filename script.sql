@@ -1,72 +1,66 @@
 DROP TABLE IF EXISTS saneamento;
 
 CREATE TABLE saneamento (
-	saneamento_id															smallint GENERATED ALWAYS AS IDENTITY,
 	saneamento_pais_nome													varchar(50),
 	porcentagem_urbana_com_acesso_a_instalacoes_basicas					real,
 	porcentagem_rural_com_acesso_a_instalacoes_basicas						real,
 	taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura		real,
 
 	CONSTRAINT PK_saneamento
-		PRIMARY KEY (saneamento_id)
+		PRIMARY KEY (saneamento_pais_nome)
 );
 
 DROP TABLE IF EXISTS higiene;
 
 CREATE TABLE higiene (
-	higiene_id																				smallint GENERATED ALWAYS AS IDENTITY,
 	higiene_pais_nome																		varchar(50),
 	porcentagem_urbana_com_acesso_a_instalacoes_basicas									real,
 	porcentagem_rural_com_acesso_a_instalacoes_basicas										real,
 	taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos		real,
 
 	CONSTRAINT PK_higiene
-		PRIMARY KEY (higiene_id)
+		PRIMARY KEY (higiene_pais_nome)
 );
 
 DROP TABLE IF EXISTS agua_potavel;
 
 CREATE TABLE agua_potavel (
-	agua_potavel_id															smallint GENERATED ALWAYS AS IDENTITY,
 	agua_potavel_pais_nome													varchar(50),
 	porcentagem_urbana_com_acesso_a_instalacoes_basicas					real,
 	porcentagem_rural_com_acesso_a_instalacoes_basicas						real,
 	taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura			real,
 
 	CONSTRAINT PK_agua_potavel
-		PRIMARY KEY (agua_potavel_id)
+		PRIMARY KEY (agua_potavel_pais_nome)
 );
 
 DROP TABLE IF EXISTS economia;
 
 CREATE TABLE economia (
-	economia_id				smallint GENERATED ALWAYS AS IDENTITY,
 	economia_pais_nome		varchar(50),
 	GINI					real,
 	PIB_per_capita			real,
 	taxa_de_desemprego		real,
 
 	CONSTRAINT PK_economia
-		PRIMARY KEY (economia_id)
+		PRIMARY KEY (economia_pais_nome)
 );
 
 DROP TABLE IF EXISTS qualidade_de_vida;
 
 CREATE TABLE qualidade_de_vida (
-	qualidade_de_vida_id					smallint GENERATED ALWAYS AS IDENTITY,
 	qualidade_de_vida_pais_nome				varchar(50),
 	IDH										real,
 	expectativa_de_vida						real,
 	gasto_publico_no_sistema_de_saude		real,
 
 	CONSTRAINT PK_qualidade_de_vida
-		PRIMARY KEY (qualidade_de_vida_id)
+		PRIMARY KEY (qualidade_de_vida_pais_nome)
 );
 
 DROP TABLE IF EXISTS metodo_de_descarte_de_excrementos;
 
 CREATE TABLE metodo_de_descarte_de_excrementos (
-	metodo_de_descarte_de_excrementos_id				smallint GENERATED ALWAYS AS IDENTITY,
 	metodo_de_descarte_de_excrementos_pais_nome			varchar(50),
 	total												integer,
 	incineracao											integer,
@@ -75,46 +69,43 @@ CREATE TABLE metodo_de_descarte_de_excrementos (
 	lixeiras_nao_supervisionadas						integer,
 
 	CONSTRAINT PK_metodo_de_descarte_de_excrementos
-		PRIMARY KEY (metodo_de_descarte_de_excrementos_id)
+		PRIMARY KEY (metodo_de_descarte_de_excrementos_pais_nome)
 );
 
 DROP TABLE IF EXISTS emissao_gases;
 
 CREATE TABLE emissao_gases (
-	emissao_gases_id							smallint GENERATED ALWAYS AS IDENTITY,
 	emissao_gases_pais_nome						varchar(50),
 	emissao_CO2_em_quilotoneladas_por_ano		integer,
 	emissao_CH4_em_quilotoneladas_por_ano		integer,
 	emissao_N2O_em_quilotoneladas_por_ano		integer,
 
 	CONSTRAINT PK_emissao_gases
-		PRIMARY KEY (emissao_gases_id)
+		PRIMARY KEY (emissao_gases_pais_nome)
 );
 
 DROP TABLE IF EXISTS agua_disponibilidade_e_tratamento;
 
 CREATE TABLE agua_disponibilidade_e_tratamento (
-	agua_disponibilidade_e_tratamento_id						smallint GENERATED ALWAYS AS IDENTITY,
 	agua_disponibilidade_e_tratamento_pais_nome				varchar(50),
 	precipitacao_milhoes_de_metros_cubicos_por_ano				integer,
 	agua_suja_gerada_em_1000_metros_cubicos_por_dia			integer,
 	agua_suja_nao_tratada_em_1000_metros_cubicos_por_dia		integer,
 
 	CONSTRAINT PK_agua_disponibilidade_e_tratamento
-		PRIMARY KEY (agua_disponibilidade_e_tratamento_id)
+		PRIMARY KEY (agua_disponibilidade_e_tratamento_pais_nome)
 );
 
 DROP TABLE IF EXISTS desenvolvimento_da_area_da_saude;
 
 CREATE TABLE desenvolvimento_da_area_da_saude (
-	desenvolvimento_da_area_da_saude_id								smallint GENERATED ALWAYS AS IDENTITY,
 	desenvolvimento_da_area_da_saude_pais_nome							varchar(50),
 	numero_de_casos_de_colera											integer,
 	gasto_governamental_per_capita_na_area_da_saude_em_dolares			integer,
 	numero_de_camas_hospitalares_a_cada_10000_cidadaos					integer,
 
 	CONSTRAINT PK_desenvolvimento_da_area_da_saude
-		PRIMARY KEY (desenvolvimento_da_area_da_saude_id)
+		PRIMARY KEY (desenvolvimento_da_area_da_saude_pais_nome)
 );
 
 DROP TABLE IF EXISTS pais;
