@@ -58,7 +58,7 @@
         <mxCell id="vPKgbdXYmVlZKoyfis51-17" value="Economia" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="200" y="1030" width="160" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="vPKgbdXYmVlZKoyfis51-18" value="+economia_pais_nome&lt;br&gt;&lt;div&gt;+gini&lt;/div&gt;&lt;div&gt;+pib_per_capita&lt;/div&gt;&lt;div&gt;+taxa_de_desemprego&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-17">
+        <mxCell id="vPKgbdXYmVlZKoyfis51-18" value="+economia_pais_nome&lt;br&gt;&lt;div&gt;+taxa_de_desemprego&lt;br&gt;&lt;/div&gt;&lt;div&gt;+gini&lt;/div&gt;&lt;div&gt;+pib_per_capita&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-17">
           <mxGeometry y="50" width="160" height="70" as="geometry" />
         </mxCell>
         <mxCell id="vPKgbdXYmVlZKoyfis51-19" value="Higiene" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
