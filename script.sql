@@ -38,9 +38,9 @@ DROP TABLE IF EXISTS economia;
 
 CREATE TABLE economia (
 	economia_pais_nome		varchar(50),
+	taxa_de_desemprego		real,
 	GINI					real,
 	PIB_per_capita			real,
-	taxa_de_desemprego		real,
 
 	CONSTRAINT PK_economia
 		PRIMARY KEY (economia_pais_nome)
