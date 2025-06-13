@@ -1,0 +1,160 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0" version="26.1.3">
+  <diagram id="R2lEEEUBdFMjLlhIrx00" name="Modelo">
+    <mxGraphModel dx="2537" dy="1993" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vPKgbdXYmVlZKoyfis51-1" value="País" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="345" y="490" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-2" value="+Nome&lt;br&gt;+Continente&lt;br&gt;+Número de habitantes" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-1">
+          <mxGeometry y="50" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-3" value="Saneamento" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" width="410" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-4" value="+saneamento_pais_nome&lt;br&gt;&lt;div&gt;+porcentagem_urbana_com_acesso_a_instalacoes_basicas&lt;/div&gt;&lt;div&gt;+porcentagem_rural_com_acesso_a_instalacoes_basicas&lt;/div&gt;&lt;div&gt;+taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segur&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-3">
+          <mxGeometry y="50" width="410" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-5" value="Qualidade de vida" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="190" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-6" value="+qualidade_de_vida_pais_nome&lt;br&gt;&lt;div&gt;+idh&lt;/div&gt;&lt;div&gt;+expectativa_de_vida&lt;/div&gt;&lt;div&gt;+gasto_publico_no_sistema_de_saude&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-5">
+          <mxGeometry y="50" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-7" value="Método de descarte de excrementos" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="478" width="290" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-8" value="+metodo_de_descarte_de_excrementos_pais_nome&lt;br&gt;&lt;div&gt;+total&lt;/div&gt;&lt;div&gt;+incineracao&lt;/div&gt;&lt;div&gt;+compostagem&lt;/div&gt;&lt;div&gt;+lixeiras_supervisionadas&lt;/div&gt;&lt;div&gt;+lixeiras_nao_supervisionadas&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-7">
+          <mxGeometry y="50" width="290" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-9" value="Água potavel" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-590" y="485" width="390" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-10" value="+agua_potavel_pais_nome&lt;br&gt;&lt;div&gt;+porcentagem_urbana_com_acesso_a_instalacoes_basicas&lt;/div&gt;&lt;div&gt;+porcentagem_rural_com_acesso_a_instalacoes_basicas&lt;/div&gt;&lt;div&gt;+taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-9">
+          <mxGeometry y="50" width="390" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-11" value="&lt;div&gt;Água disponibilidade e tratamento&lt;/div&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-195" y="190" width="340" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-12" value="+agua_disponibilidade_e_tratamento_pais_nome&lt;br&gt;&lt;div&gt;+precipitacao_milhoes_de_metros_cubicos_por_ano&lt;/div&gt;&lt;div&gt;+agua_suja_gerada_em_1000_metros_cubicos_por_dia&lt;/div&gt;&lt;div&gt;+agua_suja_nao_tratada_em_1000_metros_cubicos_por_dia&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-11">
+          <mxGeometry y="50" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1CNGwIIPbJIcyTMvGspf-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="vPKgbdXYmVlZKoyfis51-11" source="vPKgbdXYmVlZKoyfis51-12" target="vPKgbdXYmVlZKoyfis51-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-13" value="Desenvolvimento da área da saude" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-380" y="760" width="380" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-14" value="+desenvolvimento_da_area_da_saude_pais_nome&lt;br&gt;&lt;div&gt;+numero_de_casos_de_colera&lt;/div&gt;&lt;div&gt;+gasto_governamental_per_capita_na_area_da_saude_em_dolares&lt;/div&gt;&lt;div&gt;+numero_de_camas_hospitalares_a_cada_10000_cidadaos&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-13">
+          <mxGeometry y="50" width="380" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-15" value="Emissão gases" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="1030" width="245" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-16" value="+emissao_gases_pais_nome&lt;br&gt;&lt;div&gt;+emissao_co2_em_quilotoneladas_por_ano&lt;/div&gt;&lt;div&gt;+emissao_ch4_em_quilotoneladas_por_ano&lt;/div&gt;&lt;div&gt;+emissao_n2o_em_quilotoneladas_por_ano&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-15">
+          <mxGeometry y="50" width="245" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-17" value="Economia" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1030" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-18" value="+economia_pais_nome&lt;br&gt;&lt;div&gt;+gini&lt;/div&gt;&lt;div&gt;+pib_per_capita&lt;/div&gt;&lt;div&gt;+taxa_de_desemprego&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-17">
+          <mxGeometry y="50" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-19" value="Higiene" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="760" width="400" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-20" value="+higiene_pais_nome&lt;br&gt;&lt;div&gt;+porcentagem_urbana_com_acesso_a_instalacoes_basicas&lt;/div&gt;&lt;div&gt;+porcentagem_rural_com_acesso_a_instalacoes_basicas&lt;/div&gt;&lt;div&gt;+taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_d&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" vertex="1" parent="vPKgbdXYmVlZKoyfis51-19">
+          <mxGeometry y="50" width="400" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-26" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="vPKgbdXYmVlZKoyfis51-1" target="vPKgbdXYmVlZKoyfis51-4">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="440" y="400" as="sourcePoint" />
+            <mxPoint x="540" y="300" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-27" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;rounded=0;exitX=0.281;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="vPKgbdXYmVlZKoyfis51-1" target="vPKgbdXYmVlZKoyfis51-12">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="270" y="390" as="sourcePoint" />
+            <mxPoint x="160" y="270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="390" y="258" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-28" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" target="vPKgbdXYmVlZKoyfis51-6">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="460" y="490" as="sourcePoint" />
+            <mxPoint x="720" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="460" y="490" />
+              <mxPoint x="460" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-29" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="vPKgbdXYmVlZKoyfis51-1" target="vPKgbdXYmVlZKoyfis51-10">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="60" y="540" as="sourcePoint" />
+            <mxPoint x="160" y="440" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-180" y="520" />
+              <mxPoint x="-180" y="551" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-30" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="vPKgbdXYmVlZKoyfis51-2" target="vPKgbdXYmVlZKoyfis51-14">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="110" y="670" as="sourcePoint" />
+            <mxPoint x="210" y="650" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="593" />
+              <mxPoint x="280" y="828" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-31" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="vPKgbdXYmVlZKoyfis51-2" target="vPKgbdXYmVlZKoyfis51-17">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="360" y="880" as="sourcePoint" />
+            <mxPoint x="460" y="780" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="385" y="900" />
+              <mxPoint x="280" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-32" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;rounded=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="vPKgbdXYmVlZKoyfis51-2" target="vPKgbdXYmVlZKoyfis51-15">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="460" y="800" as="sourcePoint" />
+            <mxPoint x="560" y="700" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="465" y="900" />
+              <mxPoint x="603" y="900" />
+              <mxPoint x="603" y="1010" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-33" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="vPKgbdXYmVlZKoyfis51-1" target="vPKgbdXYmVlZKoyfis51-8">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="560" y="530" as="sourcePoint" />
+            <mxPoint x="660" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1030" y="520" />
+              <mxPoint x="1030" y="552" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vPKgbdXYmVlZKoyfis51-34" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="vPKgbdXYmVlZKoyfis51-2" target="vPKgbdXYmVlZKoyfis51-20">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="530" y="600" as="sourcePoint" />
+            <mxPoint x="630" y="500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="580" y="593" />
+              <mxPoint x="580" y="828" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
