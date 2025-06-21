@@ -52,24 +52,9 @@ CREATE TABLE qualidade_de_vida (
 	qualidade_de_vida_pais_nome												varchar(50),
 	IDH																		real,
 	expectativa_de_vida														real,
-	gasto_publico_no_sistema_de_saude_como_porcentagem_do_gasto_total		real,
 
 	CONSTRAINT PK_qualidade_de_vida
 		PRIMARY KEY (qualidade_de_vida_pais_nome)
-);
-
-DROP TABLE IF EXISTS metodo_de_descarte_de_excrementos;
-
-CREATE TABLE metodo_de_descarte_de_excrementos (
-	metodo_de_descarte_de_excrementos_pais_nome			varchar(50),
-	total												real,
-	incineracao											real,
-	compostagem											real,
-	lixeiras_supervisionadas							real,
-	lixeiras_nao_supervisionadas						real,
-
-	CONSTRAINT PK_metodo_de_descarte_de_excrementos
-		PRIMARY KEY (metodo_de_descarte_de_excrementos_pais_nome)
 );
 
 DROP TABLE IF EXISTS emissao_gases;
@@ -112,8 +97,7 @@ DROP TABLE IF EXISTS pais;
 
 CREATE TABLE pais (
 	nome											varchar(50) NOT NULL,
-	continente										varchar(50) NOT NULL,
-	numero_de_habitantes							integer		NOT NULL,
+	numero_de_habitantes_em_milhares				real		NOT NULL,
 
 	CONSTRAINT PK_nome
 		PRIMARY KEY (nome)
@@ -145,11 +129,6 @@ ALTER TABLE qualidade_de_vida
               FOREIGN KEY (qualidade_de_vida_pais_nome)
                              REFERENCES pais (nome);
 
-ALTER TABLE metodo_de_descarte_de_excrementos
-       ADD CONSTRAINT FK06_metodo_de_descarte_de_excrementos
-              FOREIGN KEY (metodo_de_descarte_de_excrementos_pais_nome)
-                             REFERENCES pais (nome);
-
 ALTER TABLE emissao_gases
        ADD CONSTRAINT FK07_emissao_gases
               FOREIGN KEY (emissao_gases_pais_nome)
@@ -164,3 +143,6 @@ ALTER TABLE desenvolvimento_da_area_da_saude
        ADD CONSTRAINT FK09_desenvolvimento_da_area_da_saude
               FOREIGN KEY (desenvolvimento_da_area_da_saude_pais_nome)
                              REFERENCES pais (nome);
+
+SELECT S.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura,
+	
