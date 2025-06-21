@@ -1,3 +1,2 @@
 https://ourworldindata.org/grapher/human-development-index
 https://ourworldindata.org/grapher/life-expectancy-prados-de-la-escosura
-https://ourworldindata.org/grapher/share-of-public-expenditure-on-healthcare-by-country
