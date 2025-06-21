@@ -97,7 +97,7 @@ DROP TABLE IF EXISTS pais;
 
 CREATE TABLE pais (
 	nome											varchar(50) NOT NULL,
-	numero_de_habitantes_em_milhares				real		NOT NULL,
+	numero_de_habitantes_em_milhares				int		NOT NULL,
 
 	CONSTRAINT PK_nome
 		PRIMARY KEY (nome)
@@ -130,19 +130,29 @@ ALTER TABLE qualidade_de_vida
                              REFERENCES pais (nome);
 
 ALTER TABLE emissao_gases
-       ADD CONSTRAINT FK07_emissao_gases
+       ADD CONSTRAINT FK06_emissao_gases
               FOREIGN KEY (emissao_gases_pais_nome)
                              REFERENCES pais (nome);
 
 ALTER TABLE agua_disponibilidade_e_tratamento
-       ADD CONSTRAINT FK08_agua_disponibilidade_e_tratamento
+       ADD CONSTRAINT FK07_agua_disponibilidade_e_tratamento
               FOREIGN KEY (agua_disponibilidade_e_tratamento_pais_nome)
                              REFERENCES pais (nome);
 
 ALTER TABLE desenvolvimento_da_area_da_saude
-       ADD CONSTRAINT FK09_desenvolvimento_da_area_da_saude
+       ADD CONSTRAINT FK08_desenvolvimento_da_area_da_saude
               FOREIGN KEY (desenvolvimento_da_area_da_saude_pais_nome)
                              REFERENCES pais (nome);
 
-SELECT S.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura,
-	
+SELECT
+	CASE
+		WHEN e.PIB_per_capita > 30000 THEN 'País de Alta Renda'
+		WHEN e.PIB_per_capita > 10000 THEN 'País de Média Renda'
+		WHEN e.PIB_per_capita > 0 THEN 'País de Baixa Renda'
+		ELSE 'Desconhecido'
+	END AS desenvolvimento,
+	AVG(s.porcentagem_urbana_com_acesso_a_instalacoes_basicas) AS media_urbana_acesso
+FROM saneamento s
+INNER JOIN economia e ON s.saneamento_pais_nome = e.economia_pais_nome
+GROUP BY desenvolvimento
+ORDER BY media_urbana_acesso DESC;
