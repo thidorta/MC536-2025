@@ -62,11 +62,11 @@ DROP TABLE IF EXISTS metodo_de_descarte_de_excrementos;
 
 CREATE TABLE metodo_de_descarte_de_excrementos (
 	metodo_de_descarte_de_excrementos_pais_nome			varchar(50),
-	total												integer,
-	incineracao											integer,
-	compostagem											integer,
-	lixeiras_supervisionadas							integer,
-	lixeiras_nao_supervisionadas						integer,
+	total												real,
+	incineracao											real,
+	compostagem											real,
+	lixeiras_supervisionadas							real,
+	lixeiras_nao_supervisionadas						real,
 
 	CONSTRAINT PK_metodo_de_descarte_de_excrementos
 		PRIMARY KEY (metodo_de_descarte_de_excrementos_pais_nome)
@@ -76,9 +76,9 @@ DROP TABLE IF EXISTS emissao_gases;
 
 CREATE TABLE emissao_gases (
 	emissao_gases_pais_nome						varchar(50),
-	emissao_CO2_em_quilotoneladas_por_ano		integer,
-	emissao_CH4_em_quilotoneladas_por_ano		integer,
-	emissao_N2O_em_quilotoneladas_por_ano		integer,
+	emissao_N2O_em_quilotoneladas_por_ano		real,
+	emissao_CO2_em_quilotoneladas_por_ano		real,
+	emissao_CH4_em_quilotoneladas_por_ano		real,
 
 	CONSTRAINT PK_emissao_gases
 		PRIMARY KEY (emissao_gases_pais_nome)
@@ -88,9 +88,9 @@ DROP TABLE IF EXISTS agua_disponibilidade_e_tratamento;
 
 CREATE TABLE agua_disponibilidade_e_tratamento (
 	agua_disponibilidade_e_tratamento_pais_nome				varchar(50),
-	precipitacao_milhoes_de_metros_cubicos_por_ano				integer,
-	agua_suja_gerada_em_1000_metros_cubicos_por_dia			integer,
-	agua_suja_nao_tratada_em_1000_metros_cubicos_por_dia		integer,
+	precipitacao_milhoes_de_metros_cubicos_por_ano				real,
+	agua_suja_gerada_em_1000_metros_cubicos_por_dia			real,
+	agua_suja_nao_tratada_em_1000_metros_cubicos_por_dia		real,
 
 	CONSTRAINT PK_agua_disponibilidade_e_tratamento
 		PRIMARY KEY (agua_disponibilidade_e_tratamento_pais_nome)
@@ -101,8 +101,8 @@ DROP TABLE IF EXISTS desenvolvimento_da_area_da_saude;
 CREATE TABLE desenvolvimento_da_area_da_saude (
 	desenvolvimento_da_area_da_saude_pais_nome							varchar(50),
 	numero_de_casos_de_colera											integer,
-	gasto_governamental_per_capita_na_area_da_saude_em_dolares			integer,
-	numero_de_camas_hospitalares_a_cada_10000_cidadaos					integer,
+	taxa_de_medicos_a_cada_1000_cidadaos								real,
+	numero_de_camas_hospitalares_a_cada_10000_cidadaos					real,
 
 	CONSTRAINT PK_desenvolvimento_da_area_da_saude
 		PRIMARY KEY (desenvolvimento_da_area_da_saude_pais_nome)
