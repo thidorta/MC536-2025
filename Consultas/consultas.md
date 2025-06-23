@@ -80,7 +80,7 @@ ORDER BY media_expectativa_de_vida DESC;
 SELECT
 	CASE
 		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 2 THEN 'Países com Alta Taxa de Médicos'
-		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 0.5 THEN 'Países com Média Taxa de Médicos'
+		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 1 THEN 'Países com Média Taxa de Médicos'
 		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 0 THEN 'Países com Baixa Taxa de Médicos'
 		ELSE 'Desconhecido'
 	END AS taxa_de_medicos,
