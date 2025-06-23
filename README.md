@@ -65,7 +65,9 @@ MC536/
 ├── Modelos/
 │   ├── modelo_conceitual.png
 │   ├── modelo_relacional.png
-│   └── modelo_fisico.sql
+│   ├── modelo_relacional.pgerd
+│   ├── modelo_fisico.sql
+│   └── modelo_fisico_EDR_tool.sql
 │
 ├── Resultados/
 │   ├── consulta1.csv
