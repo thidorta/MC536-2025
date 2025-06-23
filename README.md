@@ -32,3 +32,48 @@ O banco de dados foi criado no PostgreSQL, utilizando scripts para:
 Acesse os scripts e códigos utilizados aqui:  
 📄 [Criação e População do Banco + Consultas SQL](criacao_e_populacao_bd.md)
 
+---
+
+### 3. Estrutura do Repositório
+```pgsql
+MC536/
+│
+├── Consultas/
+│   └── consultas.md
+│
+├── Datasets/
+│   ├── DataUN/
+│   │   ├── Desenvolvimento_da_Área_da_Saúde/
+│   │   │   └── Fontes.txt
+│   │   ├── Emissao_Gases/
+│   │   │   └── Fontes.txt
+│   │   ├── País/
+│   │   │   └── Fontes.txt
+│   │   ├── Água_Disponibilidade_e_Tratamento/
+│   │   │   └── Fontes.txt
+│   ├── OurWorldInData/
+│   │   ├── Economia/
+│   │   │   └── Fontes.txt
+│   │   ├── Higiene/
+│   │   │   └── Fontes.txt
+│   │   ├── Qualidade_de_Vida/
+│   │   │   └── Fontes.txt
+│   │   ├── Sanitação/
+│   │   │   └── Fontes.txt
+│   │   ├── Água_potável/
+│   │       └── Fontes.txt
+├── Modelos/
+│   ├── modelo_conceitual.png
+│   ├── modelo_relacional.png
+│   └── modelo_fisico.sql
+│
+├── Resultados/
+│   ├── consulta1.csv
+│   ├── consulta2.csv
+│   ├── consulta3.csv
+│   ├── consulta4.csv
+│   ├── consulta5.csv
+│
+└── criacao_e_populacao_bd.md
+└── README.md
+```
