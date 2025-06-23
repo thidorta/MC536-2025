@@ -10,8 +10,6 @@ Este arquivo reúne as etapas para:
 
 ## 1. Conexão do Python com SQL
 
-`conexao_sql.py`
-
 ```python
 import psycopg2
 
@@ -34,8 +32,6 @@ except Exception as e:
 ---
 
 ## 2. Criação do Schema do Banco de Dados
-
-`modelo_fisico.sql`
 
 ```sql
 try:
@@ -191,8 +187,6 @@ except Exception as e:
 ---
 
 ## 3. População do Banco de Dados
-
-`populacao_bd.py`
 
 ```python
 try:
@@ -1813,8 +1807,6 @@ except Exception as e:
   ---
 
 ## 4. Execução das Consultas Não Triviais
-
-**Arquivo:** `conexao_sql.py` (continuação)
 
 ```python
 # 4. Execução das Consultas Não Triviais
