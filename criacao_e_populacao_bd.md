@@ -1898,17 +1898,17 @@ try:
   cursor.execute("""
     SELECT
     	CASE
-    		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 2 THEN 'Países com Alta Taxa de Médicos'
-    		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 0.5 THEN 'Países com Média Taxa de Médicos'
-    		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 0 THEN 'Países com Baixa Taxa de Médicos'
+    		WHEN e.taxa_de_desemprego > 10 THEN 'Países com Alta Taxa de Desemprego'
+    		WHEN e.taxa_de_desemprego > 5 THEN 'Países com Média Taxa de Desemprego'
+    		WHEN e.taxa_de_desemprego > 0 THEN 'Países com Baixa Taxa de Desemprego'
     		ELSE 'Desconhecido'
-    	END AS taxa_de_medicos,
+    	END AS taxa_desemprego,
     	AVG(s.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura + h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos + a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_saneamento_higiene_e_agua_potavel
-    FROM desenvolvimento_da_area_da_saude d
-    INNER JOIN saneamento s ON d.desenvolvimento_da_area_da_saude_pais_nome = s.saneamento_pais_nome
-    INNER JOIN higiene h ON d.desenvolvimento_da_area_da_saude_pais_nome = h.higiene_pais_nome
-    INNER JOIN agua_potavel a ON d.desenvolvimento_da_area_da_saude_pais_nome = a.agua_potavel_pais_nome
-    GROUP BY taxa_de_medicos
+    FROM economia e
+    INNER JOIN saneamento s ON e.economia_pais_nome = s.saneamento_pais_nome
+    INNER JOIN higiene h ON e.economia_pais_nome = h.higiene_pais_nome
+    INNER JOIN agua_potavel a ON e.economia_pais_nome = a.agua_potavel_pais_nome
+    GROUP BY taxa_desemprego
     ORDER BY taxa_saneamento_higiene_e_agua_potavel DESC;
   """)
   print("Consulta 5:", cursor.fetchall())
