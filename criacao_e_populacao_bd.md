@@ -1922,21 +1922,23 @@ try:
   # Consulta 2: Top 10 países com melhor acesso global (média de saneamento, água e higiene)
   cursor.execute("""
       SELECT
-        p.nome,
-        ROUND((
-          s.porcentagem_urbana_com_acesso_a_instalacoes_basicas
-          + s.porcentagem_rural_com_acesso_a_instalacoes_basicas
-          + ag.porcentagem_urbana_com_acesso_a_instalacoes_basicas
-          + ag.porcentagem_rural_com_acesso_a_instalacoes_basicas
-          + h.porcentagem_urbana_com_acesso_a_instalacoes_basicas
-          + h.porcentagem_rural_com_acesso_a_instalacoes_basicas
-        ) / 6::numeric, 2) AS media_acesso_global
-      FROM pais p
-      JOIN saneamento s ON p.nome = s.saneamento_pais_nome
-      JOIN agua_potavel ag ON p.nome = ag.agua_potavel_pais_nome
-      JOIN higiene h ON p.nome = h.higiene_pais_nome
-      ORDER BY media_acesso_global DESC
-      LIMIT 10;
+      p.nome,
+      ROUND(
+        (
+          COALESCE(s.porcentagem_urbana_com_acesso_a_instalacoes_basicas, 0)
+          + COALESCE(s.porcentagem_rural_com_acesso_a_instalacoes_basicas, 0)
+          + COALESCE(ag.porcentagem_urbana_com_acesso_a_instalacoes_basicas, 0)
+          + COALESCE(ag.porcentagem_rural_com_acesso_a_instalacoes_basicas, 0)
+          + COALESCE(h.porcentagem_urbana_com_acesso_a_instalacoes_basicas, 0)
+          + COALESCE(h.porcentagem_rural_com_acesso_a_instalacoes_basicas, 0)
+        )::numeric / 6
+      , 2) AS media_acesso_global
+    FROM pais p
+    JOIN saneamento s ON p.nome = s.saneamento_pais_nome
+    JOIN agua_potavel ag ON p.nome = ag.agua_potavel_pais_nome
+    JOIN higiene h ON p.nome = h.higiene_pais_nome
+    ORDER BY media_acesso_global DESC
+    LIMIT 10;
   """)
   print("Consulta 2:", cursor.fetchall())
   
