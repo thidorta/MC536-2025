@@ -1,0 +1,1 @@
+Alguns dos arquivos dos datasets se referem a "footnotes", os quais são apenas informações mais detalhadas sobre as fontes dos dados no final do arquivo, mas foram retirados para se extrair os dados mais facilmente, mas ainda mantendo-os nas linhas de dados de cada país ou região.
