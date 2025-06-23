@@ -143,30 +143,3 @@ ALTER TABLE desenvolvimento_da_area_da_saude
        ADD CONSTRAINT FK08_desenvolvimento_da_area_da_saude
               FOREIGN KEY (desenvolvimento_da_area_da_saude_pais_nome)
                              REFERENCES pais (nome);
-
-SELECT
-	CASE
-		WHEN e.PIB_per_capita > 30000 THEN 'País de Alta Renda'
-		WHEN e.PIB_per_capita > 10000 THEN 'País de Média Renda'
-		WHEN e.PIB_per_capita > 0 THEN 'País de Baixa Renda'
-		ELSE 'Desconhecido'
-	END AS desenvolvimento,
-	AVG(s.porcentagem_urbana_com_acesso_a_instalacoes_basicas) AS media_urbana_acesso
-FROM saneamento s
-INNER JOIN economia e ON s.saneamento_pais_nome = e.economia_pais_nome
-GROUP BY desenvolvimento
-ORDER BY media_urbana_acesso DESC;
-
-SELECT
-	CASE
-		WHEN a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura > 30000 THEN 'País com Muita Chuva'
-		WHEN a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura > 10000 THEN 'País com Moderada Chuva'
-		WHEN a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura > 0 THEN 'País com Pouca Chuva'
-		ELSE 'Desconhecido'
-	END AS ,
-	AVG(d.numero_de_casos_de_colera/p.numero_de_habitantes_em_milhares) AS media_taxa_colera
-FROM agua_potavel a
-INNER JOIN desenvolvimento_da_area_da_saude d ON a.agua_potavel_pais_nome = d.desenvolvimento_da_area_da_saude_pais_nome
-INNER JOIN pais p ON a.agua_potavel_pais_nome = p.nome
-GROUP BY 
-ORDER BY media_taxa_de_morte_a_cada_100000_morte_por_agua_nao_segura DESC;
