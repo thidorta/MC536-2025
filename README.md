@@ -1,4 +1,4 @@
-# Sistema de Análise de Indicadores Sanitários, Econômicos e Ambientais por País
+# Sistema de Análise de Indicadores Sanitários - MC536
 
 ## Descrição
 
