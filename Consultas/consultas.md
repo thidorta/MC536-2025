@@ -39,9 +39,9 @@ Com isso em mente, pretende-se verificar se países com maior chuva tem menor pr
 ```sql
 SELECT
 	CASE
-		WHEN (t.precipitacao/p.numero_de_habitantes_em_milhares) > 10 THEN 'Países com Muita Chuva em Relação ao Número de Habitantes'
-		WHEN (t.precipitacao/p.numero_de_habitantes_em_milhares) > 5 THEN 'Países com Média Chuva em Relação ao Número de Habitantes'
-		WHEN (t.precipitacao/p.numero_de_habitantes_em_milhares) > 0 THEN 'Países com Pouca Chuva em Relação ao Número de Habitantes'
+		WHEN (t.precipitacao_milhoes_de_metros_cubicos_por_ano/p.numero_de_habitantes_em_milhares) > 10 THEN 'Países com Muita Chuva em Relação ao Número de Habitantes'
+		WHEN (t.precipitacao_milhoes_de_metros_cubicos_por_ano/p.numero_de_habitantes_em_milhares) > 5 THEN 'Países com Média Chuva em Relação ao Número de Habitantes'
+		WHEN (t.precipitacao_milhoes_de_metros_cubicos_por_ano/p.numero_de_habitantes_em_milhares) > 0 THEN 'Países com Pouca Chuva em Relação ao Número de Habitantes'
 		ELSE 'Desconhecido'
 	END AS relação_chuva_população_milhoes_metros_cubicos_de_chuva_por_1000_pessoas,
 	AVG(a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_morte_a_cada_100000_mortes_por_agua_nao_segura
