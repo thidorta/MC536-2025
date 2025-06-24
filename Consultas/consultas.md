@@ -63,11 +63,11 @@ SELECT
 		WHEN h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos > 20 THEN 'Países com Média Taxa de Morte por Falta de Instalações de Higiene Básica'
 		WHEN h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos > 0 THEN 'Países com Baixa Taxa de Morte por Falta de Instalações de Higiene Básica'
 		ELSE 'Desconhecido'
-	END AS taxa_de_morte_por_falta_de_instalacoes_de_higiene_basica,
+	END AS taxa_de_morte_a_cada_100000_mortes_por_falta_de_instalacoes_de_higiene_basica,
 	AVG(q.expectativa_de_vida) AS media_expectativa_de_vida
 FROM higiene h
 INNER JOIN qualidade_de_vida q ON h.higiene_pais_nome = q.qualidade_de_vida_pais_nome
-GROUP BY taxa_de_morte_por_falta_de_instalacoes_de_higiene_basica
+GROUP BY taxa_de_morte_a_cada_100000_mortes_por_falta_de_instalacoes_de_higiene_basica
 ORDER BY media_expectativa_de_vida DESC;
 ```
 ---
