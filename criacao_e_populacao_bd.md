@@ -1750,30 +1750,30 @@ try:
     		WHEN e.PIB_per_capita > 10000 THEN 'Países de Média Renda'
     		WHEN e.PIB_per_capita > 0 THEN 'Países de Baixa Renda'
     		ELSE 'Desconhecido'
-    	END AS desenvolvimento,
-    	AVG(s.porcentagem_urbana_com_acesso_a_instalacoes_basicas) AS media_urbana_com_acesso_a_instalacoes_basicas_de_saneamento
+    	END AS intervalo_de_renda,
+    	AVG(s.porcentagem_urbana_com_acesso_a_instalacoes_basicas) AS media_da_taxa_urbana_com_acesso_a_instalacoes_basicas_de_saneamento
     FROM economia e
     INNER JOIN saneamento s ON e.economia_pais_nome = s.saneamento_pais_nome
-    GROUP BY desenvolvimento
-    ORDER BY media_urbana_com_acesso_a_instalacoes_basicas_de_saneamento DESC;
+    GROUP BY intervalo_de_renda
+    ORDER BY media_da_taxa_urbana_com_acesso_a_instalacoes_basicas_de_saneamento DESC;
   """)
   print("Consulta 1:", cursor.fetchall())
   
   # Consulta 2
   cursor.execute("""
-      SELECT
+    SELECT
     	CASE
-    		WHEN a.porcentagem_urbana_com_acesso_a_instalacoes_basicas > 95 THEN 'Países com Alta Acesso em Áreas Urbanas a Água Potável Segura'
-    		WHEN a.porcentagem_urbana_com_acesso_a_instalacoes_basicas > 80 THEN 'Países com Médio Acesso em Áreas Urbanas a Água Potável Segura'
-    		WHEN a.porcentagem_urbana_com_acesso_a_instalacoes_basicas > 0 THEN 'Países com Baixo Acesso em Áreas Urbanas a Água Potável Segura'
+    		WHEN (t.precipitacao/p.numero_de_habitantes_em_milhares) > 10 THEN 'Países com Muita Chuva em Relação ao Número de Habitantes'
+    		WHEN (t.precipitacao/p.numero_de_habitantes_em_milhares) > 5 THEN 'Países com Média Chuva em Relação ao Número de Habitantes'
+    		WHEN (t.precipitacao/p.numero_de_habitantes_em_milhares) > 0 THEN 'Países com Pouca Chuva em Relação ao Número de Habitantes'
     		ELSE 'Desconhecido'
-    	END AS acesso_a_instalacoes_basicas_de_agua_potavel,
-    	AVG(d.numero_de_casos_de_colera/p.numero_de_habitantes_em_milhares) AS media_taxa_colera
-      FROM agua_potavel a
-      INNER JOIN desenvolvimento_da_area_da_saude d ON a.agua_potavel_pais_nome = d.desenvolvimento_da_area_da_saude_pais_nome
-      INNER JOIN pais p ON a.agua_potavel_pais_nome = p.nome
-      GROUP BY acesso_a_instalacoes_basicas_de_agua_potavel
-      ORDER BY media_taxa_colera DESC;
+    	END AS relação_chuva_população_milhoes_metros_cubicos_de_chuva_por_1000_pessoas,
+    	AVG(a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_morte_a_cada_100000_mortes_por_agua_nao_segura
+    FROM agua_disponibilidade_e_tratamento t
+    INNER JOIN agua_potavel a ON t.agua_disponibilidade_e_tratamento_pais_nome = a.agua_potavel_pais_nome
+    INNER JOIN pais p ON t.agua_disponibilidade_e_tratamento_pais_nome = p.nome
+    GROUP BY relação_chuva_população_milhoes_metros_cubicos_de_chuva_por_1000_pessoas
+    ORDER BY taxa_morte_a_cada_100000_mortes_por_agua_nao_segura DESC;
   """)
   print("Consulta 2:", cursor.fetchall())
   
@@ -1785,11 +1785,11 @@ try:
     		WHEN h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos > 20 THEN 'Países com Média Taxa de Morte por Falta de Instalações de Higiene Básica'
     		WHEN h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos > 0 THEN 'Países com Baixa Taxa de Morte por Falta de Instalações de Higiene Básica'
     		ELSE 'Desconhecido'
-    	END AS taxa_de_morte_por_falta_de_instalacoes_de_higiene_basica,
+    	END AS taxa_de_morte_a_cada_100000_mortes_por_falta_de_instalacoes_de_higiene_basica,
     	AVG(q.expectativa_de_vida) AS media_expectativa_de_vida
     FROM higiene h
     INNER JOIN qualidade_de_vida q ON h.higiene_pais_nome = q.qualidade_de_vida_pais_nome
-    GROUP BY taxa_de_morte_por_falta_de_instalacoes_de_higiene_basica
+    GROUP BY taxa_de_morte_a_cada_100000_mortes_por_falta_de_instalacoes_de_higiene_basica
     ORDER BY media_expectativa_de_vida DESC;
   """)
   print("Consulta 3:", cursor.fetchall())
@@ -1798,18 +1798,18 @@ try:
   cursor.execute("""
     SELECT
     	CASE
-            WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 2 THEN 'Países com Alta Taxa de Médicos'
-            WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 1 THEN 'Países com Média Taxa de Médicos'
-            WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 0 THEN 'Países com Baixa Taxa de Médicos'
-            ELSE 'Desconhecido'
-        END AS taxa_de_medicos,
-    	AVG(s.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura + h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos + a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_saneamento_higiene_e_agua_potavel
+    		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 2 THEN 'Países com Alta Taxa de Médicos'
+    		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 1 THEN 'Países com Média Taxa de Médicos'
+    		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 0 THEN 'Países com Baixa Taxa de Médicos'
+    		ELSE 'Desconhecido'
+    	END AS taxa_medicos_a_cada_1000_cidadaos,
+    	AVG(s.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura + h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos + a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_agua_potavel_seguro
     FROM desenvolvimento_da_area_da_saude d
     INNER JOIN saneamento s ON d.desenvolvimento_da_area_da_saude_pais_nome = s.saneamento_pais_nome
     INNER JOIN higiene h ON d.desenvolvimento_da_area_da_saude_pais_nome = h.higiene_pais_nome
     INNER JOIN agua_potavel a ON d.desenvolvimento_da_area_da_saude_pais_nome = a.agua_potavel_pais_nome
-    GROUP BY taxa_de_medicos
-    ORDER BY taxa_saneamento_higiene_e_agua_potavel DESC;
+    GROUP BY taxa_medicos_a_cada_1000_cidadaos
+    ORDER BY taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_agua_potavel_seguro DESC;
   """)
   print("Consulta 4:", cursor.fetchall())
   
@@ -1823,13 +1823,13 @@ try:
     		WHEN e.taxa_de_desemprego > 0 THEN 'Países com Baixa Taxa de Desemprego'
     		ELSE 'Desconhecido'
     	END AS taxa_desemprego,
-    	AVG(s.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura + h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos + a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_saneamento_higiene_e_agua_potavel
+    	AVG(s.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura + h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos + a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_agua_potavel_seguro
     FROM economia e
     INNER JOIN saneamento s ON e.economia_pais_nome = s.saneamento_pais_nome
     INNER JOIN higiene h ON e.economia_pais_nome = h.higiene_pais_nome
     INNER JOIN agua_potavel a ON e.economia_pais_nome = a.agua_potavel_pais_nome
     GROUP BY taxa_desemprego
-    ORDER BY taxa_saneamento_higiene_e_agua_potavel DESC;
+    ORDER BY taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_agua_potavel_seguro DESC;
   """)
   print("Consulta 5:", cursor.fetchall())
 
