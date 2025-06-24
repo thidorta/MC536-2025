@@ -106,12 +106,12 @@ SELECT
 		WHEN e.taxa_de_desemprego > 0 THEN 'Países com Baixa Taxa de Desemprego'
 		ELSE 'Desconhecido'
 	END AS taxa_desemprego,
-	AVG(s.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura + h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos + a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_saneamento_higiene_e_agua_potavel
+	AVG(s.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura + h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos + a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_agua_potavel_seguro
 FROM economia e
 INNER JOIN saneamento s ON e.economia_pais_nome = s.saneamento_pais_nome
 INNER JOIN higiene h ON e.economia_pais_nome = h.higiene_pais_nome
 INNER JOIN agua_potavel a ON e.economia_pais_nome = a.agua_potavel_pais_nome
 GROUP BY taxa_desemprego
-ORDER BY taxa_saneamento_higiene_e_agua_potavel DESC;
+ORDER BY taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_agua_potavel_seguro DESC;
 ```
 ---
