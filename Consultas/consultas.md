@@ -83,14 +83,14 @@ SELECT
 		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 1 THEN 'Países com Média Taxa de Médicos'
 		WHEN d.taxa_de_medicos_a_cada_1000_cidadaos > 0 THEN 'Países com Baixa Taxa de Médicos'
 		ELSE 'Desconhecido'
-	END AS taxa_de_medicos,
-	AVG(s.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura + h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos + a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_saneamento_higiene_e_agua_potavel
+	END AS taxa_medicos_a_cada_1000_cidadaos,
+	AVG(s.taxa_de_morte_a_cada_100000_mortes_devido_a_sanitacao_nao_segura + h.taxa_de_morte_a_cada_100000_mortes_devido_a_falta_instalacoes_de_lavagem_de_maos + a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_agua_potavel_seguro
 FROM desenvolvimento_da_area_da_saude d
 INNER JOIN saneamento s ON d.desenvolvimento_da_area_da_saude_pais_nome = s.saneamento_pais_nome
 INNER JOIN higiene h ON d.desenvolvimento_da_area_da_saude_pais_nome = h.higiene_pais_nome
 INNER JOIN agua_potavel a ON d.desenvolvimento_da_area_da_saude_pais_nome = a.agua_potavel_pais_nome
-GROUP BY taxa_de_medicos
-ORDER BY taxa_saneamento_higiene_e_agua_potavel DESC;
+GROUP BY taxa_medicos_a_cada_1000_cidadaos
+ORDER BY taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_agua_potavel_seguro DESC;
 ```
 ---
 
