@@ -22,12 +22,12 @@ SELECT
 		WHEN e.PIB_per_capita > 10000 THEN 'Países de Média Renda'
 		WHEN e.PIB_per_capita > 0 THEN 'Países de Baixa Renda'
 		ELSE 'Desconhecido'
-	END AS desenvolvimento,
-	AVG(s.porcentagem_urbana_com_acesso_a_instalacoes_basicas) AS media_urbana_com_acesso_a_instalacoes_basicas_de_saneamento
+	END AS intervalo_de_renda,
+	AVG(s.porcentagem_urbana_com_acesso_a_instalacoes_basicas) AS media_da_taxa_urbana_com_acesso_a_instalacoes_basicas_de_saneamento
 FROM economia e
 INNER JOIN saneamento s ON e.economia_pais_nome = s.saneamento_pais_nome
-GROUP BY desenvolvimento
-ORDER BY media_urbana_com_acesso_a_instalacoes_basicas_de_saneamento DESC;
+GROUP BY intervalo_de_renda
+ORDER BY media_da_taxa_urbana_com_acesso_a_instalacoes_basicas_de_saneamento DESC;
 ```
 ---
 
