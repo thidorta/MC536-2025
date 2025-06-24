@@ -118,4 +118,4 @@ ORDER BY taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_a
 ---
 ## Conclusão:
 
-É visível que as condições financeiras e socieconômicas do país são mais importantes ao se tratar de acesso à água limpa, saneamento básico e higiene, do que as condições climáticas do país em questão. 
+Tendo em vista as consultas aqui tratadas, é visível que as condições financeiras e socieconômicas do país, bem como o número de profissionais da saúde, são mais importantes ao se tratar de acesso à água limpa, saneamento básico e higiene, do que as condições climáticas do país em questão. 
