@@ -13,7 +13,7 @@ Este documento apresenta cinco consultas SQL avançadas que integram dados de m�
 
 ## Consulta 1: Relação entre a força da economia do país e o accesso a saneamento básico.
 
-**Objetivo:** Prova que países ricos tem maior acesso ao saneamento básico.
+**Descrição:** Prova que países ricos tem maior acesso ao saneamento básico.
 
 ```sql
 SELECT
@@ -33,28 +33,29 @@ ORDER BY media_da_taxa_urbana_com_acesso_a_instalacoes_basicas_de_saneamento DES
 
 ## Consulta 2: A colera é obtida por água ou alimentos contaminados.
 
-**Objetivo:** Assim a consulta serve para confirmar a relação entre falta de acesso a fonte de água segura e doenças como a colera.
+**Descrição:** A chuva, em geral, é uma fonte de água limpa (com exceção a contaminações por radiação ou gases).
+Com isso em mente, pretende-se verificar se países com maior chuva tem menor problema em relação a taxa de morte por falta de água potável segura.
 
 ```sql
 SELECT
 	CASE
-		WHEN a.porcentagem_urbana_com_acesso_a_instalacoes_basicas > 95 THEN 'Países com Alta Acesso em Áreas Urbanas a Água Potável Segura'
-		WHEN a.porcentagem_urbana_com_acesso_a_instalacoes_basicas > 80 THEN 'Países com Médio Acesso em Áreas Urbanas a Água Potável Segura'
-		WHEN a.porcentagem_urbana_com_acesso_a_instalacoes_basicas > 0 THEN 'Países com Baixo Acesso em Áreas Urbanas a Água Potável Segura'
+		WHEN (t.precipitacao/p.numero_de_habitantes_em_milhares) > 10 THEN 'Países com Muita Chuva em Relação ao Número de Habitantes'
+		WHEN (t.precipitacao/p.numero_de_habitantes_em_milhares) > 5 THEN 'Países com Média Chuva em Relação ao Número de Habitantes'
+		WHEN (t.precipitacao/p.numero_de_habitantes_em_milhares) > 0 THEN 'Países com Pouca Chuva em Relação ao Número de Habitantes'
 		ELSE 'Desconhecido'
-	END AS acesso_a_instalacoes_basicas_de_agua_potavel,
-	AVG(d.numero_de_casos_de_colera/p.numero_de_habitantes_em_milhares) AS media_taxa_colera
-FROM agua_potavel a
-INNER JOIN desenvolvimento_da_area_da_saude d ON a.agua_potavel_pais_nome = d.desenvolvimento_da_area_da_saude_pais_nome
-INNER JOIN pais p ON a.agua_potavel_pais_nome = p.nome
-GROUP BY acesso_a_instalacoes_basicas_de_agua_potavel
-ORDER BY media_taxa_colera DESC;
+	END AS relação_chuva_população_milhoes_metros_cubicos_de_chuva_por_1000_pessoas,
+	AVG(a.taxa_de_morte_a_cada_100000_mortes_devido_a_agua_nao_segura) AS taxa_morte_a_cada_100000_mortes_por_agua_nao_segura
+FROM agua_disponibilidade_e_tratamento t
+INNER JOIN agua_potavel a ON t.agua_disponibilidade_e_tratamento_pais_nome = a.agua_potavel_pais_nome
+INNER JOIN pais p ON t.agua_disponibilidade_e_tratamento_pais_nome = p.nome
+GROUP BY relação_chuva_população_milhoes_metros_cubicos_de_chuva_por_1000_pessoas
+ORDER BY taxa_morte_a_cada_100000_mortes_por_agua_nao_segura DESC;
 ```
 ---
 
 ## Consulta 3: Compara a taxa de morte por falta de higiene com expectativa de vida.
 
-**Objetivo:** Permite ter noção do grau de impacto da higiene na expectativa de vida.
+**Descrição:** Permite ter noção do grau de impacto da higiene na expectativa de vida.
 
 ```sql
 SELECT
@@ -74,7 +75,7 @@ ORDER BY media_expectativa_de_vida DESC;
 
 ## Consulta 4: Comparativo da Taxa de Mortalidade por Saneamento e Higiene segundo a Disponibilidade de Médicos
 
-**Objetivo:** Agrupa países por faixas de taxa de médicos por 1000 habitantes e calcula a média da mortalidade causada por saneamento precário, falta de higiene e água não potável em cada grupo.
+**Descrição:** Agrupa países por faixas de taxa de médicos por 1000 habitantes e calcula a média da mortalidade causada por saneamento precário, falta de higiene e água não potável em cada grupo.
 
 ```sql
 SELECT
@@ -96,7 +97,7 @@ ORDER BY taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_a
 
 ## Consulta 5: Mortalidade por Saneamento vs. Taxa de Desemprego
 
-**Objetivo:** Agrupa países por faixas de taxa de desemprego e calcula a média da mortalidade relacionada à falta de saneamento, higiene e água potável, avaliando o possível impacto do desemprego na preservação de condições sanitárias básicas.
+**Descrição:** Agrupa países por faixas de taxa de desemprego e calcula a média da mortalidade relacionada à falta de saneamento, higiene e água potável, avaliando o possível impacto do desemprego na preservação de condições sanitárias básicas.
 
 ```sql
 SELECT
@@ -115,3 +116,6 @@ GROUP BY taxa_desemprego
 ORDER BY taxa_de_morte_a_cada_100000_mortes_por_falta_de_saneamento_higiene_ou_agua_potavel_seguro DESC;
 ```
 ---
+## Conclusão:
+
+É visível que as condições financeiras e socieconômicas do país são mais importantes ao se tratar de acesso à água limpa, saneamento básico e higiene, do que as condições climáticas do país em questão. 
