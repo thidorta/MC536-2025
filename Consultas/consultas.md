@@ -8,7 +8,6 @@ Este documento apresenta cinco consultas SQL avançadas que integram dados de m�
 
 -Não foi realizado uma média entre área urbana e rural, pois seria necessário saber a quantidade de pessoas em cada área individual
 
-
 ---
 
 ## Consulta 1: Relação entre a força da economia do país e o accesso a saneamento básico.
