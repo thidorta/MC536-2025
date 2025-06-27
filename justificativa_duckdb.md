@@ -1,39 +1,48 @@
-# Justificativa Técnica: Escolha do DuckDB para o Cenário A
+# Cenário A: Análise Estatística sobre Dados Estruturados e Imutáveis
+No projeto, optou-se pelo uso do DuckDB, considerando as características do cenário A:
+-Predominância de operações de leitura e agregação sobre grandes datasets.              (1)
+-Alta compressão e performance em operações de leitura.                                 (2)
+-Baixa frequência de escrita ou atualização.                                            (3)
+-Integração com notebooks ou scripts de análise.                                        (4)
+-Confiabilidade em leituras, mas sem exigência de controle transacional complexo.       (5)
 
-## Cenário A: Análise Estatística sobre Dados Estruturados e Imutáveis
+Além de que o cenário envolve a reformulação de um sistema voltado para consultas a dados altamente estruturados, os quais são dados históricos e imutáveis. Ademais, as consultas acessam, normalmente, poucos atributos, os quais envolvem um grande número de dados. Por fim, o sistema é utilizado por indivíduos que optam por integração direta com linguagems como Python ou R.
 
-Neste projeto, optamos pela utilização do banco de dados DuckDB para atender às exigências do Cenário A, que envolve consultas frequentes sobre grandes volumes de dados estruturados e históricos. As operações predominantes são de leitura e agregação, realizadas por analistas de dados que utilizam ferramentas como Python e R. O DuckDB foi escolhido por apresentar uma arquitetura colunar altamente otimizada para esse tipo de carga de trabalho, além de uma integração simples com ambientes analíticos.
+A partir destas, informações, pode-se analisar separadamente cada aspecto do DuckDB.
 
-## 1. Forma de Armazenamento de Arquivos
+# 1. Forma de Armazenamento de Arquivos
+No DuckDB, os dados são armazenados em formato colunar, significando que são formados diversas colunas, as quais são utilizadas em consultas para se obter os dados de atributos desejados. No caso em que um BD seja normalizado ao extremo (apenas 1 tabela) para a conversão ao DuckDB, as 'foreign keys' (além de outros atributos constantemente repetidos em várias tabelas) formam, cada uma, 1 coluna, enquanto os atributos restantes, são divididos como componentes de uma colunas.
 
-O DuckDB adota um modelo de armazenamento colunar, em que os dados são armazenados por coluna em vez de por linha. Essa estrutura favorece diretamente operações analíticas, permitindo a leitura eficiente de apenas um subconjunto de colunas, o que é ideal quando o objetivo é processar grandes volumes de registros acessando poucos atributos.
+No caso do nosso BD, o seu modelo colunar seria uma coluna com o nome do país e outra coluna com os demais dos atributos. Para melhor entendimento, abaixo há uma pequena representação:
 
-Além disso, o formato colunar proporciona alta compressão de dados, otimizando o uso de memória e armazenamento em disco. Essa abordagem é extremamente vantajosa para conjuntos de dados com muitos valores repetidos ou similares em uma mesma coluna, como indicadores estatísticos por país, presentes neste projeto.
+numero_de_habitantes_em_milhares                    |  41454.761719 |  2811.655029  |  46164.218750 |  ...  |  16340.822266 |
+precipitacao_milhoes_de_metros_cubicos_por_ano      |      NULL     |  32224.000000 | 330957.406250 |  ...  | 372899.406250 |
+agua_suja_gerada_em_1000_metros_cubicos_por_dia     |      NULL     |  1188.000000  |  7730.000000  |  ...  |  48978.601562 |
+...                                                 |      ...      |      ...      |      ...      |  ...  |      ...      |
+numero_de_camas_hospitalares_a_cada_10000_cidadaos  |    4.000000   |      NULL     |      NULL     |  ...  |   17.000000   |
+                                                    |  Afeganistão  |    Albania    |    Algeria    |  ...  |    Zimbabwe   |
 
-O fato de ser um banco embutido permite o armazenamento local dos dados, em arquivos binários portáteis, eliminando a necessidade de servidores dedicados ou infraestrutura adicional.
+Os arquivos podem ser armazenados de 2 maneiras:
+-Banco de Dados em Memória: Os arquivos são salvos na memória RAM e pode ser útil para tratar tarefas não recorrentes. Contém alto desempenho em troca de uma quantidade de dados limitada pelo tamanho da memória RAM.
+-Banco de Dados Persistente: Os arquivos são salvos na memória do disco e é útil para tratar tarefas recorrentes. Em troca de um pior desempenho, permite tratar uma maior quantidade de dados.
 
-## 2. Linguagem e Processamento de Consultas
+Por fim, nota-se que por haver baixa frequência de escrita e atualização de dados, além dos dados serem históricos e imutáveis, faz com que o DuckDB seja mais vantajoso. O que é explicado pelos dados no formato colunar serem extremamente organizados e estruturados, assim sendo difícil alterar dados, visto que seria necessário alterar a coluna, pois todos os dados da coluna ficam juntos. Porém, graças ao quesito (3), não há problema com isso.
 
-O DuckDB é compatível com SQL padrão, oferecendo suporte a consultas relacionais completas com uso de cláusulas como `JOIN`, `GROUP BY`, `ORDER BY`, `WHERE`, `WINDOW FUNCTIONS` e agregações. Isso facilita a transição de sistemas relacionais como PostgreSQL para análises colunadas, sem a necessidade de reescrita significativa das consultas.
+# 2. Linguagem e Processamento de Consultas
+O DuckDB pode ser utilizado através da linguagem Python, a qual é optada pelos analistas de dados no cenário, também atendendo o quesito (4). Além disso, a sua lógica é extremamente similar ao SQL, o que permite criá-lo facilmente a partir do BD do projeto 1.
 
-Além disso, o DuckDB possui integração nativa com linguagens como Python e R, permitindo que analistas consultem e manipulem dados diretamente a partir de notebooks Jupyter, scripts estatísticos ou ambientes como VSCode, PyCharm e RStudio. Isso promove uma experiência fluida para exploração e visualização de dados, ideal para times que trabalham com análise exploratória e geração de relatórios.
+Considerando que, no cenário, são realizadas operações de leitura e agregação de datasets com poucos atributos, porém com um grande número de dados, o DuckDB prova-se ideal ao permitir uma consulta extremamente direcionada devido ao formato colunar formatar os dados com extrema organização, atendendo o quesito (1). Por este motivo, pode-se realizar consultas com maior eficiência, o que também satisfaz o quesito (2).
 
-Essa integração direta permite que os dados sejam carregados de arquivos CSV, Parquet ou até mesmo DataFrames do Pandas, mantendo um fluxo de trabalho produtivo para análises estatísticas e científicas.
+# 3. Processamento e Controle de Transações
+O DuckDB contém suporte para transações ACID, a qual significa:
+A -> Atomicidade -> Transações são, como átomos no modelo de Dalton, operações indivisíveis, significando que as operações dentro da transação são todas realizadas com sucesso ou nenhuma é realizada. Em outras palavras, é impossível apenas algumas operações sucederem enquanto outras falham.
+C -> Consistência -> Garante que nenhuma transação deixará o BD com dados inválidos ou corrompidos.
+I -> Isolamento -> Transações não podem interferir umas com as outras.
+D -> Durabilidade -> Uma vez que a transação é realizada, as suas alterações devem permanecer, mesmo se a transação for removida do código.
 
-## 3. Processamento e Controle de Transações
+Graças a estes aspectos o quesito (5) é atendido, visto que a Consistência garante confiabilidade da leitura ao não permitir que dados inválidos nem corrompidos sejam existentes no BD.
 
-Apesar de ser voltado principalmente para leitura analítica, o DuckDB implementa suporte a transações com propriedades ACID (Atomicidade, Consistência, Isolamento e Durabilidade). Isso garante que as operações de leitura e escrita ocorram com integridade, mesmo em cenários que envolvem múltiplas etapas de processamento.
+# 4. Mecanismos de Recuperação e Segurança
+No projeto, foi utilizado um Banco de Dados Persistente, o qual permite salvar os dados obtidos pelas consultas no disco do computador. Também, no caso do projeto, o uso do github torna possível salvar diferentes versões do BD, permitindo fácil recuperação. Tais ações auxilia na recuperação de arquivos antigos, além da possibilidade de criar várias versões das consultas para o caso de corrupção ou alguma perda de dados do BD.
 
-O controle transacional do DuckDB é adequado para o tipo de operação envolvida neste projeto, em que a maioria dos dados é histórica e imutável. Ainda assim, é possível realizar inserções ou atualizações controladas de forma segura, mantendo a consistência dos dados sem a necessidade de mecanismos complexos de bloqueio ou concorrência.
-
-## 4. Mecanismos de Recuperação e Segurança
-
-O DuckDB armazena os dados em arquivos locais binários, que podem ser versionados, copiados e transportados facilmente, o que facilita estratégias de backup e restauração. A simplicidade do modelo de armazenamento permite que cópias dos bancos sejam mantidas em sistemas de controle de versão como Git ou em serviços de armazenamento em nuvem, como Google Drive ou Dropbox.
-
-Embora o DuckDB não seja um sistema gerenciador de banco de dados com múltiplos usuários simultâneos, sua arquitetura embarcada proporciona um ambiente seguro e isolado, onde apenas o usuário com acesso ao ambiente de execução pode consultar ou alterar os dados. Em contextos acadêmicos, analíticos e de desenvolvimento, isso representa uma abordagem segura e eficaz.
-
-Além disso, o formato utilizado é robusto e tolerante a falhas de leitura, permitindo a recuperação dos dados mesmo em casos de encerramento inesperado da aplicação, sem necessidade de procedimentos manuais de restauração.
-
-## Conclusão
-
-Diante das necessidades específicas do cenário A, o DuckDB se destaca como a tecnologia ideal para o projeto. Sua arquitetura colunar embutida, aliada à compatibilidade com SQL, integração com Python e R, suporte a transações e armazenamento leve e confiável, o tornam a escolha mais adequada para o processamento analítico de dados estruturados e imutáveis em larga escala.
+Para finalizar, devido a suportar transações ACID, o DuckDB também é capaz de evitar a corrupção de dados, adicionando um maior nível de detalhe a sua segurança.
