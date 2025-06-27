@@ -9,14 +9,14 @@ Este projeto foi desenvolvido para fins educacionais na disciplina de Banco de D
 ### 1. Modelos Conceitual, Relacional e Lógico (noSQL)
 
 <div align="center">
-  <img src="Modelos/PostgreSQL//modelo_conceitual.png" alt="Modelo Conceitual" width="600px">
+  <img src="Modelos/PostgreSQL/modelo_conceitual.drawio.png" alt="Modelo Conceitual" width="600px">
   <p><em>Figura 1: Modelo conceitual do banco de dados</em></p>
 </div>
 
 <br>
 
 <div align="center">
-  <img src="Modelos/PostgreSQL//modelo_relacional.png" alt="Modelo Relacional" width="600px">
+  <img src="Modelos/PostgreSQL/modelo_relacional.png" alt="Modelo Relacional" width="600px">
   <p><em>Figura 2: Modelo relacional do banco de dados</em></p>
 </div>
 
