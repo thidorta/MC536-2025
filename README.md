@@ -1,5 +1,16 @@
 # Sistema de Análise de Indicadores Sanitários - MC536
-
+---
+## Criadores
+```
+Thiago Salvador Teixeira Dorta - 231413
+```
+```
+Felipe Apostolos Pereira Colohoridis - 250397
+```
+```
+Fábio Luiz Ferreira da Silva Júnior - 247079
+```
+---
 ## Descrição
 
 Este projeto foi desenvolvido para fins educacionais na disciplina de Banco de Dados (MC536) na UNICAMP. Ele consiste na modelagem de um sistema de banco de dados relacional (PostgreSQL) voltado à análise integrada de informações sobre saneamento, saúde, economia, qualidade de vida e emissões por país. Esse banco será modelado também em não relacional, utilizando DuckDB. 
