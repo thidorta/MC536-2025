@@ -30,7 +30,7 @@ ORDER BY media_da_taxa_urbana_com_acesso_a_instalacoes_basicas_de_saneamento DES
 ```
 ---
 
-## Consulta 2: A colera é obtida por água ou alimentos contaminados.
+## Consulta 2: Relação entre a quantidade de chuva por habitante no país e a taxa de morte por agua não segura.
 
 **Descrição:** A chuva, em geral, é uma fonte de água limpa (com exceção a contaminações por radiação ou gases).
 Com isso em mente, pretende-se verificar se países com maior chuva tem menor problema em relação a taxa de morte por falta de água potável segura.
