@@ -1,4 +1,4 @@
-# Setup do Banco de Dados
+# Setup do Banco de Dados não Relacional
 
 Este arquivo reúne as etapas para:
 
@@ -17,7 +17,8 @@ Inicialmente, o script realiza as importações necessárias e conecta ao banco 
 from collections import defaultdict
 import duckdb
 import pandas as pd
-pd.set_option("display.max_colwidth", None)
+# as configurações abaixo são opcionais, apenas para visualização dos dados no VSCODE.
+pd.set_option("display.max_colwidth", None) 
 pd.set_option("display.width", 200) 
 
 conn = duckdb.connect("YOUR_DATABASE.duckdb") # conectar com ou criar seu banco
@@ -26,7 +27,7 @@ conn = duckdb.connect("YOUR_DATABASE.duckdb") # conectar com ou criar seu banco
 
 ## Etapa 2: Ajuste das Tuplas e População da Tabela
 
-Criamos uma única tabela chamada pais_analitico, desnormalizada, contendo todos os atributos combinados do banco relacional original. Unificamos as tuplas para que correspondam à estrutura da tabela pais_analitico, linha a linha. A população é feita utilizando listas de tuplas com conn.executemany(...). 
+Criamos uma única tabela pais_analitico, desnormalizada, contendo todos os atributos combinados de todas as tabelas do banco relacional original.
 
 ```python
 conn.execute("DROP TABLE IF EXISTS pais_analitico")
@@ -1542,7 +1543,7 @@ paises = defaultdict(dict)
 
 '''
 A partir daqui, criamos dicionários para cada país, e criamos uma única tupla para cada país, contendo todo
-conteúdo necessário, e adicionamos em "pais_analitico_dados", que era uma lista vazia. Agora, "pais_analitico_dados"
+conteúdo necessário, adicionamos em "pais_analitico_dados", que era uma lista vazia. Agora, "pais_analitico_dados"
 contém todas as tuplas, e inserimos suas informações na tabela "pais_analitico".
 '''
 
@@ -1692,7 +1693,7 @@ conn.executemany(
 ```
 ---
 
-## Etapa 3: Execução das Consultas Analíticas
+## Etapa 3: Execução das Consultas
 
 ```python
 # Consulta 1
