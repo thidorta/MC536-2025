@@ -15,12 +15,13 @@ No DuckDB, os dados são armazenados em formato colunar, significando que são f
 
 No caso do nosso BD, o seu modelo colunar seria uma coluna com o nome do país e outra coluna com os demais dos atributos. Para melhor entendimento, abaixo há uma pequena representação:
 
-numero_de_habitantes_em_milhares                    |  41454.761719 |  2811.655029  |  46164.218750 |  ...  |  16340.822266 |
-precipitacao_milhoes_de_metros_cubicos_por_ano      |      NULL     |  32224.000000 | 330957.406250 |  ...  | 372899.406250 |
-agua_suja_gerada_em_1000_metros_cubicos_por_dia     |      NULL     |  1188.000000  |  7730.000000  |  ...  |  48978.601562 |
-...                                                 |      ...      |      ...      |      ...      |  ...  |      ...      |
-numero_de_camas_hospitalares_a_cada_10000_cidadaos  |    4.000000   |      NULL     |      NULL     |  ...  |   17.000000   |
-                                                    |  Afeganistão  |    Albania    |    Algeria    |  ...  |    Zimbabwe   |
+|                      País                         |  Afeganistão  |    Albania    |    Algeria    |  ...  |    Zimbabwe   |
+|---------------------------------------------------|---------------|---------------|---------------|-------|---------------|
+|numero_de_habitantes_em_milhares                   |  41454.761719 |  2811.655029  |  46164.218750 |  ...  |  16340.822266 |
+|precipitacao_milhoes_de_metros_cubicos_por_ano     |      NULL     |  32224.000000 | 330957.406250 |  ...  | 372899.406250 |
+|agua_suja_gerada_em_1000_metros_cubicos_por_dia    |      NULL     |  1188.000000  |  7730.000000  |  ...  |  48978.601562 |
+|                       ...                         |      ...      |      ...      |      ...      |  ...  |      ...      |
+|numero_de_camas_hospitalares_a_cada_10000_cidadaos |    4.000000   |      NULL     |      NULL     |  ...  |   17.000000   |
 
 Os arquivos podem ser armazenados de 2 maneiras:
 -Banco de Dados em Memória: Os arquivos são salvos na memória RAM e pode ser útil para tratar tarefas não recorrentes. Contém alto desempenho em troca de uma quantidade de dados limitada pelo tamanho da memória RAM.
