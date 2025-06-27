@@ -36,51 +36,49 @@ O banco de dados foi criado no PostgreSQL, utilizando scripts para:
 
 Para acessar o script e os códigos utilizados, clique aqui:  
 [Criação e População do Banco PostgreSQL + Consultas SQL](criacao_e_populacao_bd.md)
+
 [Criação e População do Banco DuckDB + Consultas SQL](duckdb_criacao_e_populacao_bd.md)
+
 ---
 
 ### 3. Estrutura do Repositório
 ```pgsql
-MC536/
-│
+MC536-2025/
 ├── Consultas/
 │   └── consultas.md
 │
 ├── Datasets/
 │   ├── DataUN/
-│   │   ├── Desenvolvimento_da_Área_da_Saúde/
-│   │   │   └── Fontes.txt
-│   │   ├── Emissao_Gases/
-│   │   │   └── Fontes.txt
-│   │   ├── País/
-│   │   │   └── Fontes.txt
-│   │   ├── Água_Disponibilidade_e_Tratamento/
-│   │   │   └── Fontes.txt
-│   ├── OurWorldInData/
-│   │   ├── Economia/
-│   │   │   └── Fontes.txt
-│   │   ├── Higiene/
-│   │   │   └── Fontes.txt
-│   │   ├── Qualidade_de_Vida/
-│   │   │   └── Fontes.txt
-│   │   ├── Sanitação/
-│   │   │   └── Fontes.txt
-│   │   ├── Água_potável/
-│   │       └── Fontes.txt
+│   │   ├── Desenvolvimento_da_Área_da_Saúde/Fontes.txt
+│   │   ├── Emissao_Gases/Fontes.txt
+│   │   ├── País/Fontes.txt
+│   │   ├── Água_Disponibilidade_e_Tratamento/Fontes.txt
+│   └── OurWorldInData/
+│       ├── Economia/Fontes.txt
+│       ├── Higiene/Fontes.txt
+│       ├── Qualidade_de_Vida/Fontes.txt
+│       ├── Sanitação/Fontes.txt
+│       └── Água_potável/Fontes.txt
+│
 ├── Modelos/
 │   ├── modelo_conceitual.png
 │   ├── modelo_relacional.png
 │   ├── modelo_relacional.pgerd
 │   ├── modelo_fisico.sql
-│   └── modelo_fisico_EDR_tool.sql
+│   └── modelo_fisico_ERD_tool.sql
 │
 ├── Resultados/
 │   ├── consulta1.csv
 │   ├── consulta2.csv
 │   ├── consulta3.csv
 │   ├── consulta4.csv
-│   ├── consulta5.csv
+│   └── consulta5.csv
 │
-└── criacao_e_populacao_bd.md
+├── banco_p2.duckdb
+├── criacao_e_populacao_bd.md
+├── duckdb_criacao_e_populacao_bd.md
+├── justificativa_duckdb.md
+├── script_duckdb.py
 └── README.md
+
 ```
